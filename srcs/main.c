@@ -11,3 +11,16 @@
 /* ************************************************************************** */
 
 
+#include <fcntl.h>
+#include "filler.h"
+
+int         main(void)
+{
+    char    *line = NULL;
+    int     fd = open("111", O_RDWR|O_CREAT, S_IRWXU);
+
+   // ft_putendl_fd("this is string", fd);
+    while (gnl(STDIN_FILENO, &line) == 1)
+        ft_putendl_fd(line, fd);
+    close(fd);
+}
