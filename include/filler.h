@@ -14,6 +14,45 @@
 # define FILLER_H
 
 #include "libft.h"
-#include "stdio.h"
+
+typedef struct	s_x
+{
+	int			x;
+	int 		y;
+}				t_xy;
+
+typedef struct	s_point
+{
+	t_xy		crd;
+	int 		heat;
+	int 		cntnt;
+}				t_point;
+
+typedef struct	s_plateau
+{
+	int 		wdth;
+	int 		hght;
+	t_point 	**pnts;
+}				t_plateau;
+
+typedef struct	s_token
+{
+	int			wdth;
+	int 		hght;
+	t_xy 		**crd;
+}				t_token;
+
+typedef struct	s_user
+{
+	char		sym;
+	int 		num;
+}				t_user;
+
+typedef struct	s_contest
+{
+	t_user		plr;
+	t_user		foe;
+	t_plateau	plat;
+}				t_contest;
 
 #endif
