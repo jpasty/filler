@@ -6,13 +6,13 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:46:35 by jpasty            #+#    #+#             */
-/*   Updated: 2020/08/22 14:23:44 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/08/29 15:11:11 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int					define_user(char *line, t_contest *cntst)
+int					define_user(t_contest *cntst, char *line)
 {
 	char			**split;
 

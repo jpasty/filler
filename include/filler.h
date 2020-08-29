@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/08/22 19:47:07 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/08/29 19:57:21 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,30 @@
 
 #include "libft.h"
 
+typedef struct	s_user
+{
+	char		sym;
+	int 		num;
+}				t_user;
+
 typedef struct	s_x
 {
 	int			x;
 	int			y;
 }				t_xy;
 
+typedef struct	s_token
+{
+	int			hght;
+	int			wdth;
+	t_xy		**crd;
+}				t_token;
+
 typedef struct	s_cell
 {
 	t_xy		crd;
 	int			heat;
-	int			cntnt;
+	int 		cntnt;
 }				t_cell;
 
 typedef struct	s_plateau
@@ -35,19 +48,6 @@ typedef struct	s_plateau
 	t_cell		***cells;
 }				t_plateau;
 
-typedef struct	s_token
-{
-	int			hght;
-	int			wdth;
-	t_xy		**crd;
-}				t_token;
-
-typedef struct	s_user
-{
-	char		sym;
-	int 		num;
-}				t_user;
-
 typedef struct	s_contest
 {
 	t_user		plr;
@@ -55,7 +55,7 @@ typedef struct	s_contest
 	t_plateau	plat;
 }				t_contest;
 
-int 			define_user(char *line, t_contest *cntst);
-void 			define_map(t_contest *cntst, char *line);
+int 			define_user(t_contest *cntst, char *line);
+int 			define_map(t_contest *cntst);
 
 #endif

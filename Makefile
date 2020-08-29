@@ -20,7 +20,7 @@ vpath %.c $(DIR_SRCS)
 vpath %.o $(DIR_BIN)
 vpath %.h $(DIR_INCLUDE)
 
-all: make_lft $(NAME)
+``all: make_lft $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(addprefix $(DIR_BIN), $(OBJS)) $(LFT) -o $@

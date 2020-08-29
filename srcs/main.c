@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 17:33:36 by jpasty            #+#    #+#             */
-/*   Updated: 2020/08/22 17:30:37 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/08/29 16:08:19 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@
 
 int				main(void)
 {
-    char		*line = NULL;
-	t_contest	cntst;
+    char				*line;
+	static t_contest	cntst;
 
+	line = NULL;
 	freopen("111","r",stdin); // for debugging opportunity. Delete in future.
-	if (gnl(STDIN_FILENO, &line) != 1 || define_user(line, &cntst))
+	if (gnl(STDIN_FILENO, &line) != 1 || define_user(&cntst, line) == EXIT_FAILURE)
 	{
-    	free(line);
-    	return (1);
+		free(line);
+		return (-1);
 	}
 	while (1)
 	{
-		define_map(&cntst, line);
-		break ;
+		if (define_map(&cntst) == EXIT_FAILURE)
+			break ;
 	}
 	free(line);
 	return (0);
