@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:46:35 by jpasty            #+#    #+#             */
-/*   Updated: 2020/08/29 15:11:11 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/05 21:04:04 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int					define_user(t_contest *cntst, char *line)
 		ft_free_split(split);
 		return (EXIT_FAILURE);
 	}
-	cntst->plr.num = split[2][1] - '0';
-	cntst->foe.num = cntst->plr.num % 2 + 1;
-	cntst->plr.sym = cntst->plr.num == 1 ? 'o' : 'x';
-	cntst->foe.sym = cntst->plr.sym == 'o' ? 'x' : 'y';
+	cntst->plr = split[2][1] - '0';
+	cntst->foe = cntst->plr % 2 + 1;
+	cntst->plr = cntst->plr == 1 ? 'O' : 'X';
+	cntst->foe = cntst->plr == 'O' ? 'X' : 'O';
 	return (EXIT_SUCCESS);
 }

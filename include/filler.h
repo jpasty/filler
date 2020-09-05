@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/08/29 19:57:21 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/05 21:04:04 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define FILLER_H
 
 #include "libft.h"
-
-typedef struct	s_user
-{
-	char		sym;
-	int 		num;
-}				t_user;
 
 typedef struct	s_x
 {
@@ -50,8 +44,8 @@ typedef struct	s_plateau
 
 typedef struct	s_contest
 {
-	t_user		plr;
-	t_user		foe;
+	int			plr;
+	int			foe;
 	t_plateau	plat;
 }				t_contest;
 
