@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 17:33:36 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/05 21:23:58 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/09/06 15:18:19 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ int				main(void)
 
 	line = NULL;
 	freopen("../111","r",stdin); // for debugging opportunity. Delete in future.
-	if (gnl(STDIN_FILENO, &line) != 1 || define_user(&cntst, line) == EXIT_FAILURE)
+	if (gnl(STDIN_FILENO, &line) != 1 || user_define(&cntst, line) != EXIT_SUCCESS)
 	{
 		free(line);
 		return (-1);
 	}
 	while (1)
 	{
-		if (define_map(&cntst) != EXIT_SUCCESS)
+		if (map_define(&cntst) != EXIT_SUCCESS)
 			break ;
+		heat_define(&cntst);
 	}
 	free(line);
 	return (0);

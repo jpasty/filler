@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/05 21:04:04 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/09/06 15:18:19 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ typedef struct	s_contest
 	t_plateau	plat;
 }				t_contest;
 
-int 			define_user(t_contest *cntst, char *line);
-int 			define_map(t_contest *cntst);
+int 			user_define(t_contest *cntst, char *line);
+int 			map_define(t_contest *cntst);
+void 			heat_define(t_contest *cntst);
 
 #endif

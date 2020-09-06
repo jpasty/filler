@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 15:30:54 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/05 22:26:37 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/09/06 15:18:19 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int		get_plateau_size(t_plateau *plt)
 	return (EXIT_SUCCESS);
 }
 
-int 			define_map(t_contest *cntst)
+int 			map_define(t_contest *cntst)
 {
 	int			h;
 	char		*line;
