@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/12 09:45:59 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/09/20 13:37:47 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ typedef struct	s_contest
 
 int 			user_define(t_contest *cntst, char *line);
 int 			map_define(t_contest *cntst);
+int				get_area_size(int *height, int *width);
 void 			heat_define(t_contest *cntst);
+int				put_token(t_contest *cntst, t_token *tkn);
+t_token			*token_define(int fd);
+
 
 #endif

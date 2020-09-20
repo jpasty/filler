@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 15:30:54 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/12 22:13:27 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/09/20 15:00:09 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ static int		get_content(t_cell **const *cells,
 			return (EXIT_FAILURE);
 		}
 		cells[height][w]->cntnt = row[w];
-		cells[height][w]->heat = cells[height][w]->cntnt == '.' ?
-				ft_abs(height + width) : 0;
 		w++;
 	}
 	return (EXIT_SUCCESS);
 }
 
-static int		get_plateau_size(t_plateau *plt)
+int		get_area_size(int *height, int *width)
 {
 	char 		**split;
 	char		*line;
@@ -53,13 +51,11 @@ static int		get_plateau_size(t_plateau *plt)
 	free(line);
 	if (split[1] && split[2])
 	{
-		if ((plt->hght = ft_atoi(split[1])) == 0 ||
-				(plt->wdth = ft_atoi(split[2])) == 0)
+		if ((*height = ft_atoi(split[1])) == 0 ||
+				(*width = ft_atoi(split[2])) == 0)
 			return (EXIT_FAILURE);
 	}
 	ft_free_split(split);
-	gnl(STDIN_FILENO, &line);
-	free(line);
 	return (EXIT_SUCCESS);
 }
 
@@ -70,12 +66,13 @@ int 			map_define(t_contest *cntst)
 
 	h = 0;
 	line = NULL;
-	if (get_plateau_size(&(cntst->plat)) != EXIT_SUCCESS)
+	if (get_area_size(&(cntst->plat.hght), &(cntst->plat.wdth)) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	if (!(cntst->plat.cells = malloc(sizeof(t_cell *) * (cntst->plat.hght))))
+	gnl(STDIN_FILENO, &line);
+	free(line);
+	if (!(cntst->plat.cells = malloc(sizeof(t_cell *)* (cntst->plat.hght + 1))))
 		return (EXIT_FAILURE);
-	while (h < cntst->plat.hght && gnl(STDIN_FILENO, &line) >= 0 && line
-			&& !ft_strnequ(line, "Piece", 5))
+	while (h < cntst->plat.hght && gnl(STDIN_FILENO, &line) >= 0 && line)
 	{
 		cntst->plat.cells[h] =
 				malloc(sizeof(t_cell *) * (cntst->plat.wdth));

@@ -50,7 +50,8 @@ SRCS =	ft_atoi.c ft_bzero.c \
 		ft_strncpy.c ft_strnequ.c \
 		ft_strcspn.c ft_free_split.c \
 		ft_isspace.c ft_swap.c \
-		ft_lstrev.c get_next_line.c
+		ft_lstrev.c get_next_line.c \
+		ft_abs.c ft_max.c
 
 OBJS			:= $(SRCS:.c=.o)
 OBJS_BIN		:= $(addprefix $(DIR_BIN), $(OBJS))
