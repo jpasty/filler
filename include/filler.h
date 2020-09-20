@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/06 15:18:19 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/12 09:45:59 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "libft.h"
 
-typedef struct	s_x
+typedef struct	s_xy
 {
 	int			x;
 	int			y;

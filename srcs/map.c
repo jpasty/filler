@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 15:30:54 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/06 15:18:19 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/12 22:13:27 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ static int		get_content(t_cell **const *cells,
 	{
 		if (!(cells[height][w] = (t_cell *)malloc(sizeof(t_cell))))
 			return (EXIT_FAILURE);
-		cells[height][w]->crd.x = row[w];
+		cells[height][w]->crd.x = w;
 		cells[height][w]->crd.y = height;
 		row[w] = (char)ft_toupper(row[w]);
 		if (row[w] != '.' && row[w] != 'O' && row[w] != 'X')
+		{
 			return (EXIT_FAILURE);
+		}
 		cells[height][w]->cntnt = row[w];
+		cells[height][w]->heat = cells[height][w]->cntnt == '.' ?
+				ft_abs(height + width) : 0;
 		w++;
 	}
 	return (EXIT_SUCCESS);
@@ -75,7 +79,7 @@ int 			map_define(t_contest *cntst)
 	{
 		cntst->plat.cells[h] =
 				malloc(sizeof(t_cell *) * (cntst->plat.wdth));
-		if (get_content(&cntst->plat.cells[h], ft_strchr((line), ' ') + 1,
+		if (get_content(cntst->plat.cells, ft_strchr((line), ' ') + 1,
 						cntst->plat.wdth, h) != EXIT_SUCCESS)
 		{
 			free(line);
