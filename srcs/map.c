@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 15:30:54 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/20 15:00:09 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/26 15:04:02 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static int		get_content(t_cell **const *cells,
 		cells[height][w]->crd.y = height;
 		row[w] = (char)ft_toupper(row[w]);
 		if (row[w] != '.' && row[w] != 'O' && row[w] != 'X')
-		{
 			return (EXIT_FAILURE);
-		}
 		cells[height][w]->cntnt = row[w];
 		w++;
 	}

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/20 11:28:42 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/20 11:28:42 by jpasty           ###   ########.fr       */
+/*   Created: 2020/09/12 12:57:30 by jpasty            #+#    #+#             */
+/*   Updated: 2020/09/12 13:05:19 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_max(int a, int b)
+int 	ft_max(int a, int b)
 {
 	return (a > b ? a : b);
 }

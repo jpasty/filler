@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 09:41:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/20 15:09:01 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/26 12:27:57 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int 	manhattan_distance(t_xy end, t_xy start)
 	int		dx = end.x - start.x;
 	int 	dy = end.y - start.y;
 
-	return (ft_max(ft_abs(dx), ft_abs(dy)));
-//	return ft_abs(dx) + ft_abs(dy);
+//	return (ft_max(ft_abs(dx), ft_abs(dy)));
+	return ft_abs(dx) + ft_abs(dy);
 }
 
 static void	heat_cell_calc(t_contest *cntst, t_cell *cell)

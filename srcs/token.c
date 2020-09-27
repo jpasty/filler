@@ -6,61 +6,75 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:28:47 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/20 16:40:10 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/26 17:03:45 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-static int	validate_token(int fd, t_token *tkn)
+static int	check_line(const char *line, int wdth)
 {
-	char *line;
-	int i;
+	int		i;
+	int		stars;
 
-	line = NULL;
 	i = 0;
-	if (gnl(fd, &line) != 1)
-	{
-		free(line);
-		return (EXIT_FAILURE);
-	}
+	stars = 0;
 	while (line[i])
 	{
 		if (line[i] != '.' && line[i] != '*')
+			return (EXIT_FAILURE);
+		if (line[i] == '*')
+			stars++;
+		i++;
+	}
+	if (i != wdth)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+static int	validate_token(int fd, t_token *tkn, char ***shape)
+{
+	int 	h;
+	int		;
+	char	*line;
+
+	h = 0;
+	line = NULL;
+	if (!(*shape = ft_memalloc(sizeof(char *) * (tkn->hght + 1))))
+		return (EXIT_FAILURE);
+	while (h < tkn->hght)
+	{
+		if (gnl(fd, &line) != 1 || check_line(line, tkn->wdth) != EXIT_SUCCESS)
 		{
 			free(line);
 			return (EXIT_FAILURE);
 		}
-		i++;
+		*shape[h++] = line;
 	}
-	free(line);
-	if (i != tkn->wdth)
-		return (EXIT_FAILURE);
+	//вернуть количество токенов, если -1, 0 -> ошибка
 	return (EXIT_SUCCESS);
+}
+
+static int	create_token(int fd, t_token **tkn)
+{
+	char	**shape;
+
+	if (validate_token(fd, *tkn, &shape) != EXIT_SUCCESS)
+		return (EXIT_FAILURE);
+
+	ft_free_split(shape);
 }
 
 t_token		*token_define(int fd)
 {
 	t_token	*tkn;
-	int		h;
-	int 	w;
 
-	h = 0 ;
 	if (!(tkn = ft_memalloc(sizeof(t_token))))
 		return (NULL);
 	if (get_area_size(&(tkn->hght), &(tkn->wdth)) != EXIT_SUCCESS)
 		return (NULL);
-	if (!(tkn->crd = malloc(sizeof(t_xy *) * tkn->hght)))
+	if (create_token(fd, &tkn) != EXIT_SUCCESS)
 		return (NULL);
-	while (tkn->crd[h] < tkn->hght)
-	{
-		w = 0;
-		if (validate_token(fd, tkn) != EXIT_SUCCESS)
-			return (NULL);
-		if (!(tkn->crd[h] = ft_memalloc(sizeof(t_xy) * w)))
-			return (NULL);
-		while (w < tkn->wdth)
-			tkn->crd[h][w] = (t_xy){h, w++};
+
 		h++;
 	}
 	return (tkn);
@@ -71,5 +85,12 @@ int 	put_token(t_contest *cntst, t_token *tkn)
 	if (!tkn)
 		return (EXIT_FAILURE);
 
+	printf("\nToken is: \n");
+	for (int i = 0; i < tkn->hght; i++)
+	{
+		for (int j = 0; j < tkn->wdth; j++)
+			printf("{%i,%i}", tkn->crd[i][j].y, tkn->crd[i][j].x);
+		printf("\n");
+	}
 	return (EXIT_SUCCESS);
 }

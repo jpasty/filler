@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 19:16:24 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/20 11:58:47 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/09/26 13:02:26 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <stdio.h> //don't forget to delete
+
 
 typedef struct		s_list
 {
@@ -107,7 +109,7 @@ int					ft_isspace(int c);
 void				ft_free_split(char **split);
 void				ft_swap(int *a, int *b);
 int			    	gnl(const int fd, char **line);
-int					ft_abs(int a);
+int 				ft_abs(int a);
 int 				ft_max(int a, int b);
 
 #endif
