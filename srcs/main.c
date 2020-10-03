@@ -6,11 +6,12 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 17:33:36 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/26 11:11:03 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/10/03 16:22:46 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <stdio.h> //don't forget to delete
 #include "filler.h"
 
 int				main(void)
@@ -19,8 +20,9 @@ int				main(void)
 	static t_contest	cntst;
 
 	line = NULL;
-	freopen("../111","r",stdin); // for debugging opportunity. Delete in future.
-	if (gnl(STDIN_FILENO, &line) != 1 || user_define(&cntst, line) != EXIT_SUCCESS)
+	freopen("111","r",stdin); // for debugging opportunity. Delete in future.
+	if (gnl(STDIN_FILENO, &line) != 1 ||
+		user_define(&cntst, line) != EXIT_SUCCESS)
 	{
 		free(line);
 		return (-1);

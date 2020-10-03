@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/09/26 13:02:26 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/10/03 16:22:46 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_token
 {
 	int			hght;
 	int			wdth;
+	int			stars;
 	t_xy		**crd;
 }				t_token;
 
