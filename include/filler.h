@@ -55,7 +55,12 @@ int 			map_define(t_contest *cntst);
 int				get_area_size(int *height, int *width);
 void 			heat_define(t_contest *cntst);
 int				put_token(t_contest *cntst, t_token *tkn);
+int 			check_area_heat(t_contest *cntst, t_xy **crd, int x, int y);
+int 			check_line(const char *line, int *stars, int wdth);
+t_xy			*new_token_coord(int x, int y);
+t_xy			min_reverse_coord(t_xy **crd);
 t_token			*token_define(int fd);
+
 
 
 #endif

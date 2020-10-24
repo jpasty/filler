@@ -6,40 +6,11 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:28:47 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/03 19:27:18 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/24 14:03:23 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-static t_xy	*new_token_coord(int x, int y)
-{
-	t_xy	*new;
-
-	if (!(new = ft_memalloc(sizeof(t_xy))))
-		return (NULL);
-	new->x = x;
-	new->y = y;
-	return (new);
-}
-
-static int	check_line(const char *line, int *stars, int wdth)
-{
-	int		i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != '.' && line[i] != '*')
-			return (EXIT_FAILURE);
-		if (line[i] == '*')
-			(*stars)++;
-		i++;
-	}
-	if (i != wdth)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
 
 static int	validate_token(int fd, t_token **tkn, char ***shape)
 {
@@ -105,10 +76,26 @@ t_token		*token_define(int fd)
 	return (tkn);
 }
 
-int 	put_token(t_contest *cntst, t_token *tkn)
+int	 		put_token(t_contest *cntst, t_token *tkn)
 {
+	t_cell	tkn_bound_point;
+	int 	heat;
+	int 	x;
+	int 	y;
+
 	if (!tkn)
 		return (EXIT_FAILURE);
+	tkn_bound_point.crd = min_reverse_coord(tkn->crd);
+	y = tkn_bound_point.crd.y;
+	while (y < cntst->plat.hght)
+	{
+		x = tkn_bound_point.crd.x;
+		while (x < cntst->plat.wdth)
+		{
+			heat = check_area_heat(cntst, tkn->crd, x,  y)
+		}
+	}
+
 
 	printf("\nToken is: \n");
 	for (int j = 0; j < tkn->stars; j++)
