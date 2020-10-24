@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:28:47 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/24 14:03:23 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/24 15:22:22 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,25 @@ int	 		put_token(t_contest *cntst, t_token *tkn)
 
 	if (!tkn)
 		return (EXIT_FAILURE);
-	tkn_bound_point.crd = min_reverse_coord(tkn->crd);
+
+	printf("\nToken is: \n");
+	for (int j = 0; j < tkn->stars; j++)
+		printf("{%i,%i}", tkn->crd[j]->y, tkn->crd[j]->x);
+	printf("\n");
+	tkn_bound_point = (t_cell){min_reverse_coord(tkn->crd), -1, 0};
 	y = tkn_bound_point.crd.y;
 	while (y < cntst->plat.hght)
 	{
 		x = tkn_bound_point.crd.x;
 		while (x < cntst->plat.wdth)
 		{
-			heat = check_area_heat(cntst, tkn->crd, x,  y)
+			heat = check_area_heat(cntst, tkn->crd, x,  y);
+			tkn_bound_point = heat && (heat < tkn_bound_point.heat
+				|| tkn_bound_point.heat <= 0) ? (t_cell){(t_xy){x, y}, heat, 0}
+				: tkn_bound_point;
+			x++;
 		}
+		y++;
 	}
-
-
-	printf("\nToken is: \n");
-	for (int j = 0; j < tkn->stars; j++)
-			printf("{%i,%i}", tkn->crd[j]->y, tkn->crd[j]->x);
-		printf("\n");
 	return (EXIT_SUCCESS);
 }

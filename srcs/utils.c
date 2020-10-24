@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:03:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/24 14:42:57 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/24 14:52:18 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,14 @@ int			check_area_heat(t_contest *cntst, t_xy **crd, int x, int y)
 	i = 0;
 	while (crd[i])
 	{
+		y = crd[i]->y + y < 0 ? cntst->plat.hght + y - crd[i]->y : y;
+		x = crd[i]->x + x < 0 ? cntst->plat.wdth + x - crd[i]->x : x;
 		y_bias = crd[i]->y + y;
 		x_bias = crd[i]->x + x;
-		if ()
+		if (y_bias < 0 || x_bias < 0 || y_bias > cntst->plat.hght ||
+				x_bias > cntst->plat.wdth || cntst->plat.
+				cells[y_bias][x_bias]->cntnt == cntst->foe)
+			return (0);
 		if (cntst->plat.cells[y_bias][x_bias]->cntnt != cntst->foe)
 			heat = cntst->plat.cells[y_bias][x_bias]->heat;
 		if (cntst->plat.cells[y_bias][x_bias]->cntnt == cntst->plr)
