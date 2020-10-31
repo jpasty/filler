@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:03:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/24 14:52:18 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/25 21:09:02 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_xy		min_reverse_coord(t_xy **crd)
 	int		y_min;
 
 	i = 0;
-	x_min = crd[i]->x;
+	x_min = (crd[i])->x;
 	y_min = crd[i]->y;
 	while (crd[i])
 	{
@@ -78,8 +78,8 @@ int			check_area_heat(t_contest *cntst, t_xy **crd, int x, int y)
 		x = crd[i]->x + x < 0 ? cntst->plat.wdth + x - crd[i]->x : x;
 		y_bias = crd[i]->y + y;
 		x_bias = crd[i]->x + x;
-		if (y_bias < 0 || x_bias < 0 || y_bias > cntst->plat.hght ||
-				x_bias > cntst->plat.wdth || cntst->plat.
+		if (y_bias < 0 || x_bias < 0 || y_bias >= cntst->plat.hght ||
+				x_bias >= cntst->plat.wdth || cntst->plat.
 				cells[y_bias][x_bias]->cntnt == cntst->foe)
 			return (0);
 		if (cntst->plat.cells[y_bias][x_bias]->cntnt != cntst->foe)

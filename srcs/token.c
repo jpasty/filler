@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:28:47 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/24 15:22:22 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/25 21:14:04 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_token		*token_define(int fd)
 	if (get_area_size(&(tkn->hght), &(tkn->wdth)) != EXIT_SUCCESS ||
 			create_token(fd, &tkn) != EXIT_SUCCESS)
 		return (NULL);
+	tkn->crd[tkn->stars] = NULL;
 	return (tkn);
 }
 
@@ -85,11 +86,6 @@ int	 		put_token(t_contest *cntst, t_token *tkn)
 
 	if (!tkn)
 		return (EXIT_FAILURE);
-
-	printf("\nToken is: \n");
-	for (int j = 0; j < tkn->stars; j++)
-		printf("{%i,%i}", tkn->crd[j]->y, tkn->crd[j]->x);
-	printf("\n");
 	tkn_bound_point = (t_cell){min_reverse_coord(tkn->crd), -1, 0};
 	y = tkn_bound_point.crd.y;
 	while (y < cntst->plat.hght)

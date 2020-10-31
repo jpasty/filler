@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 13:02:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/03 16:22:46 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/25 20:54:15 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int 			check_line(const char *line, int *stars, int wdth);
 t_xy			*new_token_coord(int x, int y);
 t_xy			min_reverse_coord(t_xy **crd);
 t_token			*token_define(int fd);
-
 
 
 #endif
