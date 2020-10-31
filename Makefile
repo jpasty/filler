@@ -1,17 +1,30 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/31 12:52:24 by jpasty            #+#    #+#              #
+#    Updated: 2020/10/31 13:40:49 by jpasty           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME        := jpasty.filler
 
 DIR_SRCS    := srcs/
-DIR_INCLUDE  := include/
+DIR_INCLUDE := include/
 DIR_BIN     := bin/
 DIR_LIBFT   := libft/
 LIBFT       := libft.a
-HEADERS     := libft.h filler.h
+HEADERS     := filler.h libft.h ft_printf.h
 CC          := gcc
-FLAGS       := -Wall -Wextra -Werror
+FLAGS       := -g -Wall -Wextra -Werror
 RM          := /bin/rm -rf
 
-SRCS        := main.c
+SRCS        := main.c users.c map.c heat.c token.c utils.c
 OBJS        := $(SRCS:.c=.o)
+
 LFT         := $(addprefix $(DIR_LIBFT), $(LIBFT))
 
 MAKE_LFT    := make -C $(DIR_LIBFT)
@@ -20,7 +33,7 @@ vpath %.c $(DIR_SRCS)
 vpath %.o $(DIR_BIN)
 vpath %.h $(DIR_INCLUDE)
 
-``all: make_lft $(NAME)
+all: make_lft $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(addprefix $(DIR_BIN), $(OBJS)) $(LFT) -o $@

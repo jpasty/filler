@@ -6,13 +6,13 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:03:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/25 21:09:02 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/10/31 20:21:14 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-t_xy		min_reverse_coord(t_xy **crd)
+t_xy		min_reverse_coord(t_token *tkn)
 {
 	t_xy	min;
 	int		i;
@@ -20,12 +20,14 @@ t_xy		min_reverse_coord(t_xy **crd)
 	int		y_min;
 
 	i = 0;
-	x_min = (crd[i])->x;
-	y_min = crd[i]->y;
-	while (crd[i])
+	x_min = tkn->crd[i]->x;
+	y_min = tkn->crd[i]->y;
+	while (i < tkn->stars)
 	{
-		x_min = crd[i]->x < x_min ? crd[i]->x : x_min;
-		y_min = crd[i]->y < y_min ? crd[i]->y : y_min;
+		if (tkn->crd[i]->x < x_min)
+			x_min = tkn->crd[i]->x;
+		if (tkn->crd[i]->y < y_min)
+			 y_min = tkn->crd[i]->y;
 		i++;
 	}
 	min.x = x_min * -1;
@@ -62,7 +64,7 @@ int			check_line(const char *line, int *stars, int wdth)
 	return (EXIT_SUCCESS);
 }
 
-int			check_area_heat(t_contest *cntst, t_xy **crd, int x, int y)
+int			check_area_heat(t_contest *cntst, t_token *tkn, int x, int y)
 {
 	int		overlap;
 	int		heat;
@@ -71,22 +73,38 @@ int			check_area_heat(t_contest *cntst, t_xy **crd, int x, int y)
 	int		i;
 
 	overlap = 0;
+	heat = 0;
 	i = 0;
-	while (crd[i])
+	while (i < tkn->stars)
 	{
-		y = crd[i]->y + y < 0 ? cntst->plat.hght + y - crd[i]->y : y;
-		x = crd[i]->x + x < 0 ? cntst->plat.wdth + x - crd[i]->x : x;
-		y_bias = crd[i]->y + y;
-		x_bias = crd[i]->x + x;
+		y = tkn->crd[i]->y + y < 0 ? cntst->plat.hght + y - tkn->crd[i]->y : y;
+		x = tkn->crd[i]->x + x < 0 ? cntst->plat.wdth + x - tkn->crd[i]->x : x;
+		y_bias = tkn->crd[i]->y + y;
+		x_bias = tkn->crd[i++]->x + x;
 		if (y_bias < 0 || x_bias < 0 || y_bias >= cntst->plat.hght ||
 				x_bias >= cntst->plat.wdth || cntst->plat.
 				cells[y_bias][x_bias]->cntnt == cntst->foe)
 			return (0);
 		if (cntst->plat.cells[y_bias][x_bias]->cntnt != cntst->foe)
-			heat = cntst->plat.cells[y_bias][x_bias]->heat;
+			heat += cntst->plat.cells[y_bias][x_bias]->heat;
 		if (cntst->plat.cells[y_bias][x_bias]->cntnt == cntst->plr)
 			overlap++;
-		i++;
 	}
 	return (overlap == 1 ? heat : 0);
+}
+
+void 		plateau_destroyer(t_plateau plateau)
+{
+	int h;
+	int w;
+
+	h = 0;
+	while (h < plateau.hght)
+	{
+		w = 0;
+		while (w < plateau.wdth)
+			free(plateau.cells[h][w++]);
+		free(plateau.cells[h++]);
+	}
+	free(plateau.cells);
 }

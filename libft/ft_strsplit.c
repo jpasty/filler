@@ -6,11 +6,11 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 19:09:25 by jpasty            #+#    #+#             */
-/*   Updated: 2019/04/22 21:34:20 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/31 19:42:06 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/libft.h"
+#include "libft.h"
 
 static size_t	ft_count_words(char const *s, char c)
 {
@@ -41,7 +41,7 @@ static char		*ft_memword(char const *s, char c)
 	i = 0;
 	while (s[l] != c && s[l])
 		l++;
-	if (!(word = (char *)malloc(sizeof(char) * l)))
+	if (!(word = (char *)malloc(sizeof(char) * l + 1)))
 		return (NULL);
 	while (s[i] && s[i] != c)
 	{

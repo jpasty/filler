@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 19:16:24 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/03 19:00:33 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/31 13:26:32 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include "ft_printf.h"
 # include <stdio.h> //don't forget to delete
 
 typedef struct		s_list
@@ -107,8 +108,8 @@ size_t				ft_strcspn(const char *str, const char *sym);
 int					ft_isspace(int c);
 void				ft_free_split(char **split);
 void				ft_swap(int *a, int *b);
-int			    	gnl(const int fd, char **line);
+int			    	gnl(int fd, char **line);
 int					ft_abs(int a);
-int 				ft_max(int a, int b);
+int 				ft_max_int(int a, int b);
 
 #endif

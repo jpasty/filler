@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 09:41:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/03 16:22:46 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/10/31 18:50:38 by jpasty           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int 	manhattan_distance(t_xy end, t_xy start)
 	int		dx = end.x - start.x;
 	int 	dy = end.y - start.y;
 
-//	return (ft_max(ft_abs(dx), ft_abs(dy)));
 	return ft_abs(dx) + ft_abs(dy);
 }
 
@@ -66,10 +65,18 @@ void 		heat_define(t_contest *cntst)
 		h++;
 	}
 	//must delete in future
-	for(int i = 0; i < cntst->plat.hght; i++)
+/*	for(int i = 0; i < cntst->plat.hght; i++)
 	{
 		for (int j = 0; j < cntst->plat.wdth; j++)
+		{
+			if (cntst->plat.cells[i][j]->heat == 0 && cntst->plat.cells[i][j]->cntnt != cntst->foe)
+				printf("\033[1;36m");
+			if (cntst->plat.cells[i][j]->heat == 0 && cntst->plat.cells[i][j]->cntnt == cntst->foe)
+				printf("\033[1;31m");
 			printf("%2i ", cntst->plat.cells[i][j]->heat);
+			if (cntst->plat.cells[i][j]->heat == 0)
+				printf("\033[0m");
+		}
 		printf("\n");
-	}
+	}*/
 }
