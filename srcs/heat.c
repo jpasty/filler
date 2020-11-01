@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 09:41:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/31 18:50:38 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/11/01 09:58:10 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void 		heat_define(t_contest *cntst)
 		h++;
 	}
 	//must delete in future
-/*	for(int i = 0; i < cntst->plat.hght; i++)
+	for(int i = 0; i < cntst->plat.hght; i++)
 	{
 		for (int j = 0; j < cntst->plat.wdth; j++)
 		{
@@ -78,5 +78,5 @@ void 		heat_define(t_contest *cntst)
 				printf("\033[0m");
 		}
 		printf("\n");
-	}*/
+	}
 }

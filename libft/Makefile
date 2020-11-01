@@ -76,4 +76,4 @@ fclean: clean
 re: fclean all
 
 .PHONY:	clean fclean re
-#.SILENT: all $(NAME) $(OBJS) $(DIR_BIN) clean fclean re
+.SILENT: all $(NAME) $(OBJS) $(DIR_BIN) clean fclean re

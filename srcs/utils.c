@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:03:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/31 20:21:14 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/11/01 10:14:53 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int			check_line(const char *line, int *stars, int wdth)
 	int		i;
 
 	i = 0;
+	if (!line)
+		return (EXIT_FAILURE);
 	while (line[i])
 	{
 		if (line[i] != '.' && line[i] != '*')

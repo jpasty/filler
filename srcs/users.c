@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:46:35 by jpasty            #+#    #+#             */
-/*   Updated: 2020/10/31 18:48:16 by jpasty           ###   ########.fr       */
+/*   Updated: 2020/11/01 10:00:45 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			user_define(t_contest *cntst)
 	char	**split;
 	char	*line;
 
-	freopen("111","r",stdin); // for debugging opportunity. Delete in future.
+	freopen("../111","r",stdin); // for debugging opportunity. Delete in future.
 	line = NULL;
 	if (gnl(STDIN_FILENO, &line) != 1)
 	{
