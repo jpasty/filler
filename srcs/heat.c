@@ -6,12 +6,11 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 09:41:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/01 09:58:10 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 22:36:31 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-#include <stdio.h>
 
 static int 	manhattan_distance(t_xy end, t_xy start)
 {
@@ -64,19 +63,4 @@ void 		heat_define(t_contest *cntst)
 		}
 		h++;
 	}
-	//must delete in future
-	/*for(int i = 0; i < cntst->plat.hght; i++)
-	{
-		for (int j = 0; j < cntst->plat.wdth; j++)
-		{
-			if (cntst->plat.cells[i][j]->heat == 0 && cntst->plat.cells[i][j]->cntnt != cntst->foe)
-				printf("\033[1;36m");
-			if (cntst->plat.cells[i][j]->heat == 0 && cntst->plat.cells[i][j]->cntnt == cntst->foe)
-				printf("\033[1;31m");
-			printf("%2i ", cntst->plat.cells[i][j]->heat);
-			if (cntst->plat.cells[i][j]->heat == 0)
-				printf("\033[0m");
-		}
-		printf("\n");
-	}*/
 }

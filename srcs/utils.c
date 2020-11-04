@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 14:03:31 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/04 13:24:05 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 22:36:31 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ void 		plateau_destroyer(t_plateau plateau)
 	int h;
 	int w;
 
-	h = 0;
-	if (plateau.cells && *(plateau.cells) && **(plateau.cells))
+	if (*plateau.cells)
 	{
+		h = 0;
 		while (plateau.cells[h])
 		{
 			w = 0;

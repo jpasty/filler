@@ -6,11 +6,19 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:28:47 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/04 13:24:05 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 22:39:25 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+static void token_destroy(t_token *tkn)
+{
+	for (int i = 0; i < tkn->stars; i++)
+		free(tkn->crd[i]);
+	free(tkn->crd);
+	free(tkn);
+}
 
 static int	validate_token(int fd, t_token **tkn, char ***shape)
 {
@@ -104,10 +112,7 @@ int	 		put_token(t_contest *cntst, t_token *tkn)
 		}
 		y++;
 	}
-	for (int i = 0; i < tkn->stars; i++)
-		free(tkn->crd[i]);
-	free(tkn->crd);
-	free(tkn);
-	ft_printf("%i %i\n", tkn_bound_point.crd.x, tkn_bound_point.crd.y);
+	token_destroy(tkn);
+	ft_printf("%i %i\n", tkn_bound_point.crd.y, tkn_bound_point.crd.x);
 	return (EXIT_SUCCESS);
 }

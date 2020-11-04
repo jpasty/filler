@@ -6,14 +6,14 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 19:16:24 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/04 13:24:05 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 23:22:57 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 1024
+# define BUFF_SIZE 1
 # define FD_MAX 10240
 
 # include <string.h>
