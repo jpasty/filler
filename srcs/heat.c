@@ -65,7 +65,7 @@ void 		heat_define(t_contest *cntst)
 		h++;
 	}
 	//must delete in future
-	for(int i = 0; i < cntst->plat.hght; i++)
+	/*for(int i = 0; i < cntst->plat.hght; i++)
 	{
 		for (int j = 0; j < cntst->plat.wdth; j++)
 		{
@@ -78,5 +78,5 @@ void 		heat_define(t_contest *cntst)
 				printf("\033[0m");
 		}
 		printf("\n");
-	}
+	}*/
 }

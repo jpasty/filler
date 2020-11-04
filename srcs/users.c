@@ -6,19 +6,20 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:46:35 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/01 10:00:45 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 12:16:22 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 #include <fcntl.h> //don't forget to delete
+#include <stdio.h>
 
 int			user_define(t_contest *cntst)
 {
 	char	**split;
 	char	*line;
 
-	freopen("../111","r",stdin); // for debugging opportunity. Delete in future.
+//	freopen("111","r",stdin); // for debugging opportunity. Delete in future.
 	line = NULL;
 	if (gnl(STDIN_FILENO, &line) != 1)
 	{
@@ -30,6 +31,7 @@ int			user_define(t_contest *cntst)
 				!ft_strequ(split[1],"exec") || *split[2] != 'p')
 	{
 		ft_free_split(split);
+		free(line);
 		return (EXIT_FAILURE);
 	}
 	cntst->plr = split[2][1] - '0';

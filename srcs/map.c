@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 15:30:54 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/01 09:57:15 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 10:56:54 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static int		get_content(t_cell **const *cells,
 		char *row, int width, int height)
 {
-	int 		w;
+	int			w;
 
 	w = 0;
-	if (!row || !cells[height])
+	if (!row || (int)ft_strlen(row) > width || !cells[height])
 		return (EXIT_FAILURE);
 	while (w < width)
 	{
@@ -47,6 +47,11 @@ int		get_area_size(int *height, int *width)
 		return (EXIT_FAILURE);
 	}
 	free(line);
+	if (!(*split) || *split[0] != 'P')
+	{
+		ft_free_split(split);
+		return (EXIT_FAILURE);
+	}
 	if (split[1] && split[2])
 	{
 		if ((*height = ft_atoi(split[1])) == 0 ||
@@ -68,20 +73,20 @@ int 			map_define(t_contest *cntst)
 		return (EXIT_FAILURE);
 	gnl(STDIN_FILENO, &line);
 	free(line);
-	if (!(cntst->plat.cells = malloc(sizeof(t_cell *)* (cntst->plat.hght + 1))))
+	if (!(cntst->plat.cells =
+			ft_memalloc(sizeof(t_cell *) * (cntst->plat.hght + 1))))
 		return (EXIT_FAILURE);
 	while (h < cntst->plat.hght && gnl(STDIN_FILENO, &line) >= 0 && line)
 	{
 		cntst->plat.cells[h] =
-				malloc(sizeof(t_cell *) * (cntst->plat.wdth));
+				ft_memalloc(sizeof(t_cell *) * (cntst->plat.wdth + 1));
 		if (get_content(cntst->plat.cells, ft_strchr((line), ' ') + 1,
-						cntst->plat.wdth, h) != EXIT_SUCCESS)
+						cntst->plat.wdth, h++) != EXIT_SUCCESS)
 		{
 			free(line);
 			return (EXIT_FAILURE);
 		}
 		free(line);
-		h++;
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 13:28:47 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/01 10:44:33 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 11:29:51 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ static int	validate_token(int fd, t_token **tkn, char ***shape)
 		return (EXIT_FAILURE);
 	while (h < (*tkn)->hght)
 	{
-		if (gnl(fd, &line) != 1 ||
-			check_line(line, &(*tkn)->stars, (*tkn)->wdth) != EXIT_SUCCESS)
+		if (gnl(fd, &line) != 1)
+			return (EXIT_FAILURE);
+		if (check_line(line, &(*tkn)->stars, (*tkn)->wdth) != EXIT_SUCCESS)
 		{
 			free(line);
 			return (EXIT_FAILURE);

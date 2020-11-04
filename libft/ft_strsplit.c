@@ -6,7 +6,7 @@
 /*   By: jpasty <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 19:09:25 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/01 10:25:57 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 09:29:00 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char		*ft_memword(char const *s, char c)
 	i = 0;
 	while (s[l] != c && s[l])
 		l++;
-	if (!(word = (char *)malloc(sizeof(char) * l + 1)))
+	if (!(word = ft_memalloc(sizeof(char) * l + 1)))
 		return (NULL);
 	while (s[i] && s[i] != c)
 	{
@@ -69,7 +69,7 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	i = 0;
 	words = ft_count_words(s, c);
-	if (!(tab = (char **)malloc(sizeof(char *) * (words + 1))))
+	if (!(tab = ft_memalloc(sizeof(char *) * (words + 1))))
 		return (NULL);
 	while (*s)
 	{

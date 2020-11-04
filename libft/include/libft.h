@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 19:16:24 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/01 10:49:42 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 12:28:33 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include "ft_printf.h"
 # include <stdio.h> //don't forget to delete
 
 
