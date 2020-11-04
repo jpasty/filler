@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:46:35 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/04 12:16:22 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 13:24:51 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			user_define(t_contest *cntst)
 
 //	freopen("111","r",stdin); // for debugging opportunity. Delete in future.
 	line = NULL;
-	if (gnl(STDIN_FILENO, &line) != 1)
+	if (gnl(0, &line) != 1)
 	{
 		free(line);
 		return (EXIT_FAILURE);

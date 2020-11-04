@@ -6,7 +6,7 @@
 /*   By: jpasty <jpasty@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 15:30:54 by jpasty            #+#    #+#             */
-/*   Updated: 2020/11/04 10:56:54 by jpasty           ###   ########.ru       */
+/*   Updated: 2020/11/04 13:24:16 by jpasty           ###   ########.ru       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		get_area_size(int *height, int *width)
 	char		*line;
 
 	line = NULL;
-	if (gnl(STDIN_FILENO, &line) != 1 || !(split = ft_strsplit(line, ' ')))
+	if (gnl(0, &line) != 1 || !(split = ft_strsplit(line, ' ')))
 	{
 		free(line);
 		return (EXIT_FAILURE);
@@ -71,12 +71,12 @@ int 			map_define(t_contest *cntst)
 	line = NULL;
 	if (get_area_size(&(cntst->plat.hght), &(cntst->plat.wdth)) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	gnl(STDIN_FILENO, &line);
+	gnl(0, &line);
 	free(line);
 	if (!(cntst->plat.cells =
 			ft_memalloc(sizeof(t_cell *) * (cntst->plat.hght + 1))))
 		return (EXIT_FAILURE);
-	while (h < cntst->plat.hght && gnl(STDIN_FILENO, &line) >= 0 && line)
+	while (h < cntst->plat.hght && gnl(0, &line) >= 0 && line)
 	{
 		cntst->plat.cells[h] =
 				ft_memalloc(sizeof(t_cell *) * (cntst->plat.wdth + 1));

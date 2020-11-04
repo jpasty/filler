@@ -23,7 +23,7 @@ int				main(void)
 		if (map_define(&cntst) != EXIT_SUCCESS)
 			break ;
 		heat_define(&cntst);
-		if (put_token(&cntst, token_define(STDIN_FILENO)) != EXIT_SUCCESS)
+		if (put_token(&cntst, token_define(0)) != EXIT_SUCCESS)
 			break ;
 	}
 	plateau_destroyer(cntst.plat);
